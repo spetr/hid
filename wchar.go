@@ -76,7 +76,7 @@ func stringToWchar2(s string) (*C.wchar_t, C.size_t) {
 	for len(s1) > 0 {
 		r, size := utf8.DecodeRuneInString(s1)
 		if er, _ := utf16.EncodeRune(r); er == '\uFFFD' {
-			slen += 1
+			slen++
 		} else {
 			slen += 2
 		}
