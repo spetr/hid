@@ -19,7 +19,7 @@ package hid
 #cgo windows LDFLAGS: -lsetupapi
 
 #ifdef OS_LINUX
-	#include <sys/poll.h>
+	#include <poll.h>
 	#include "os/threads_posix.c"
 	#include "os/poll_posix.c"
 
@@ -280,7 +280,7 @@ func (dev *Device) Read(b []byte) (int, error) {
 // sure to allow space for this extra byte in []b. Upon return, the first byte
 // will still contain the Report ID, and the report data will start in b[1].
 func (dev *Device) GetFeatureReport(b []byte) (int, error) {
-	// Abort if nothing to read
+	// Abort if we don't have anywhere to write the results
 	if len(b) == 0 {
 		return 0, nil
 	}
