@@ -30,7 +30,7 @@ matrix:
       dist: xenial
       go: 1.12.x
     - os: osx
-      go: 1.12.x
+      go: 1.14.x
 
 script:
   - go install ./...
